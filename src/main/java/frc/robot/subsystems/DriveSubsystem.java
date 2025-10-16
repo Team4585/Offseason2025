@@ -7,10 +7,14 @@ package frc.robot.subsystems;
 
 import java.io.File;
 
+import java.util.function.Supplier;
+
 import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import swervelib.parser.SwerveParser;
 import swervelib.SwerveDrive;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.util.Units;
 import swervelib.telemetry.SwerveDriveTelemetry;
 import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
@@ -28,6 +32,14 @@ public class DriveSubsystem extends SubsystemBase{
 
     
 SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
+  }
+
+  public Command driveWithTheSpeeds(Supplier<ChassisSpeeds> velocity){
+    return run(()->{swerveDrive.driveFieldOriented(velocity.get());});
+  }
+
+  public SwerveDrive getDrive(){
+    return swerveDrive;
   }
 
   

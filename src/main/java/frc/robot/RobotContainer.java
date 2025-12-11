@@ -14,7 +14,7 @@ import swervelib.SwerveInputStream;
 public class RobotContainer {
   
   ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  DriveSubsystem driveSubsystem = new DriveSubsystem();
+  public DriveSubsystem driveSubsystem = new DriveSubsystem();
   ShootingSubsystem shootingSubsystem = new ShootingSubsystem();
 
   private final CommandJoystick m_driverController =

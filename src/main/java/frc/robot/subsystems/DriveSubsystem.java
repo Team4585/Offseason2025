@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import swervelib.parser.SwerveParser;
 import swervelib.SwerveDrive;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.util.Units;
 import swervelib.telemetry.SwerveDriveTelemetry;
@@ -40,6 +42,25 @@ SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
 
   public SwerveDrive getDrive(){
     return swerveDrive;
+  }
+
+  public void drive(double speed, Rotation2d driveAngle, Rotation2d rotationGoal){
+
+    swerveDrive.driveFieldOriented(swerveDrive.swerveController.getTargetSpeeds(
+            -(driveAngle.getCos()*speed )* swerveDrive.getMaximumChassisVelocity(),
+            (driveAngle.getSin()*speed) * swerveDrive.getMaximumChassisVelocity(), 
+            rotationGoal.getRadians(),
+            swerveDrive.getOdometryHeading().getRadians(),
+            swerveDrive.getMaximumChassisVelocity()));
+
+  }
+
+  public Pose2d getPose(){
+    return swerveDrive.getPose();
+  }
+
+  public ChassisSpeeds getRobotVelocity(){
+    return swerveDrive.getRobotVelocity();
   }
 
   

@@ -11,20 +11,20 @@ public class ShootingSubsystem extends SubsystemBase {
   public SparkMax shootMotor;
   
   public ShootingSubsystem() {
-    intakeMotor = new SparkMax(Constants.MotorConstants.kIntakeMotorID, MotorType.kBrushless);
     shootMotor = new SparkMax(Constants.MotorConstants.kShootMotorID, MotorType.kBrushless);
   }
 
   public void shoot(){
-    intakeMotor.set(1);
     shootMotor.set(1);
   }
 
   public void stop(){
-    intakeMotor.set(0);
     shootMotor.set(0);
+ }
 
-  }
+ public void backwards(){
+  shootMotor.set(-1);
+ }
 
   /**
    * Example command factory method.

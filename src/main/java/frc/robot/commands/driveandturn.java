@@ -22,9 +22,9 @@ public class driveandturn extends Command{
     protected PIDController pid = new PIDController(0.01, 0, 0);
 
    
-    public driveandturn(int distance, int angle,DriveSubsystem driver){
+    public driveandturn(int distance, int angle,int strafe,DriveSubsystem driver){
         drivesub = driver;
-        this.pose=drivesub.getPose().plus(new Transform2d(new Translation2d(0, distance), new Rotation2d(angle))); ;
+        this.pose=drivesub.getPose().plus(new Transform2d(new Translation2d(strafe, distance), new Rotation2d(angle))); ;
         pid.setSetpoint(0);
         pid.setTolerance(0.1);
         

@@ -18,7 +18,7 @@ public final class Constants {
   }
 
   public static class MotorConstants{
-    public static final int kIntakeMotorID = 20;
-    public static final int kShootMotorID = 21;
+    public static final int kIntakeMotorID = 48;
+    public static final int kShootMotorID = 49;
   }
 }

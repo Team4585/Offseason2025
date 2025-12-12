@@ -23,7 +23,7 @@ import swervelib.telemetry.SwerveDriveTelemetry.TelemetryVerbosity;
 
 
 public class DriveSubsystem extends SubsystemBase{
-  double maximumSpeed = Units.feetToMeters(4.5);
+  double maximumSpeed = Units.feetToMeters(14.5);
   File swerveJsonDirectory = new File(Filesystem.getDeployDirectory(),"swerve");
   SwerveDrive swerveDrive;
   

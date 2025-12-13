@@ -43,9 +43,9 @@ public class RobotContainer {
     SwerveInputStream driveSpeeds = new SwerveInputStream(driveSubsystem.getDrive(), () -> m_driverController.getX(), ()->m_driverController.getY(), ()->m_driverController.getZ());
     driveSubsystem.setDefaultCommand(driveSubsystem.driveWithTheSpeeds(driveSpeeds));
 
-    m_driverController.trigger().whileTrue(new RunCommand(()->{shootingSubsystem.shoot();}));
+    m_driverController.button(5).whileTrue(new RunCommand(()->{shootingSubsystem.shoot();}));
     m_driverController.button(6).whileTrue(new RunCommand(()->{shootingSubsystem.backwards();}));
-    shootingSubsystem.setDefaultCommand(new RunCommand(()->{shootingSubsystem.stop();}));
+    shootingSubsystem.setDefaultCommand(new RunCommand(()->{shootingSubsystem.stop();}, shootingSubsystem));
 
   }
 
